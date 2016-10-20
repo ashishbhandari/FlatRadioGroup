@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:flat="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+
+    <com.library.FlatRadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.library.FlatRadioButton
+            android:id="@+id/flat_radio_button_first"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            flat:setChecked="true"
+            flat:setText="Boy"
+            flat:setTextColor="@drawable/radio_button_text_selector"
+            flat:setTextSize="6sp"
+            flat:setTitleTick="@drawable/radio_button_title_tick_selector" />
+
+        <com.library.FlatRadioButton
+            android:id="@+id/flat_radio_button_second"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            flat:setText="Girl"
+            flat:setTextColor="@drawable/radio_button_text_selector"
+            flat:setTextSize="6sp"
+            flat:setTitleTick="@drawable/radio_button_title_tick_selector" />
+
+        <com.library.FlatRadioButton
+            android:id="@+id/flat_radio_button_third"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            flat:setText="Straight"
+            flat:setTextColor="@drawable/radio_button_text_selector"
+            flat:setTextSize="6sp"
+            flat:setTitleTick="@drawable/radio_button_title_tick_selector" />
+
+    </com.library.FlatRadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radio_button_selector"
+        android:text="hello testing" />
+
+</LinearLayout>

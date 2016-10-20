@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlatCompoundButton">
+        <attr name="setAnimator" format="boolean" />
+        <attr name="setChecked" format="boolean" />
+        <attr name="setTitleTick" format="color|reference" />
+
+        <attr name="setText" format="string|reference" />
+        <attr name="setTextSize" format="dimension|reference" />
+        <attr name="setTextColor" format="reference" />
+    </declare-styleable>
+</resources>

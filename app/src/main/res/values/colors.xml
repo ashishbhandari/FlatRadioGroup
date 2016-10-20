@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    
+    <color name="mc_title_bar">#FF16C2DD</color>
+    <color name="mc_state_pressed">#FF1088DD</color>
+
+</resources>
