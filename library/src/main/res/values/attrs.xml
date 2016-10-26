@@ -5,8 +5,12 @@
         <attr name="setChecked" format="boolean" />
         <attr name="setTitleTick" format="color|reference" />
 
-        <attr name="setText" format="string|reference" />
+        <attr name="setFlatText" format="string|reference" />
         <attr name="setTextSize" format="dimension|reference" />
         <attr name="setTextColor" format="reference" />
+
+        <attr name="setButtBackground" format="reference" />
+        <attr name="setButtText" format="string|reference" />
+        <attr name="setButtMargin" format="dimension|reference" />
     </declare-styleable>
 </resources>

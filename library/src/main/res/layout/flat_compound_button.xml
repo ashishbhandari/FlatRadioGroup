@@ -4,13 +4,12 @@
     android:layout_height="wrap_content"
     android:gravity="center">
 
-
     <com.library.widget.FlatStateButton
         android:id="@+id/flat_compound_button_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true" />
-
+        android:clickable="true"
+        android:padding="5dp" />
 
     <com.library.widget.FlatStateTitleTick
         android:id="@+id/flat_compound_button_tick_ico"
@@ -18,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|right"
         android:adjustViewBounds="true"
+        android:paddingRight="15dp"
         android:paddingTop="-10dp"
         android:scaleType="fitStart" />
 

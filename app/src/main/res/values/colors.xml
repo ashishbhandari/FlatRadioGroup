@@ -7,4 +7,7 @@
     <color name="mc_title_bar">#FF16C2DD</color>
     <color name="mc_state_pressed">#FF1088DD</color>
 
+    <color name="flat_state_normal">#D5D5D5</color>
+    <color name="flat_state_pressed">#FF6F00</color>
+
 </resources>

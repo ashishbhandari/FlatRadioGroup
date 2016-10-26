@@ -4,6 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F3F3F3"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -21,8 +22,9 @@
             android:id="@+id/flat_radio_button_first"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            flat:setButtBackground="@drawable/button_border_state_selector"
+            flat:setButtText="Default Warranty"
             flat:setChecked="true"
-            flat:setText="Boy"
             flat:setTextColor="@drawable/radio_button_text_selector"
             flat:setTextSize="6sp"
             flat:setTitleTick="@drawable/radio_button_title_tick_selector" />
@@ -33,7 +35,8 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            flat:setText="Girl"
+            flat:setButtBackground="@drawable/button_border_state_selector"
+            flat:setButtText="2 Years Warranty"
             flat:setTextColor="@drawable/radio_button_text_selector"
             flat:setTextSize="6sp"
             flat:setTitleTick="@drawable/radio_button_title_tick_selector" />
@@ -42,17 +45,12 @@
             android:id="@+id/flat_radio_button_third"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            flat:setText="Straight"
+            flat:setButtBackground="@drawable/button_border_state_selector"
+            flat:setButtText="3 Years Warranty"
             flat:setTextColor="@drawable/radio_button_text_selector"
             flat:setTextSize="6sp"
             flat:setTitleTick="@drawable/radio_button_title_tick_selector" />
 
     </com.library.FlatRadioGroup>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/radio_button_selector"
-        android:text="hello testing" />
 
 </LinearLayout>

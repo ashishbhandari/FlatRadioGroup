@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.StringRes;
 import android.util.AttributeSet;
@@ -32,16 +33,20 @@ public class FlatCompoundButton extends FrameLayout implements Checkable, OnStat
 
     protected Drawable mButtonTitleTickDrawable;
 
-    protected CharSequence mText;
+    protected CharSequence mFlatText;
+    protected CharSequence mButtText;
 
     protected float mTextSize;
 
+    protected int mButtonMargin;
+
     protected ColorStateList mColorColorStateList;
+    protected int mButtonStateSelector;
 
     private final FlatStateButton mButtonView;
     private final FlatStateTitleTick mButtonTitleTickIcon;
 
-    protected FlatStateText mButtonText;
+    protected FlatStateText mFlatStateText;
 
     protected boolean mChecked;
     protected boolean mAnimator;
@@ -66,7 +71,7 @@ public class FlatCompoundButton extends FrameLayout implements Checkable, OnStat
 
         mButtonView = (FlatStateButton) findViewById(R.id.flat_compound_button_image);
         mButtonTitleTickIcon = (FlatStateTitleTick) findViewById(R.id.flat_compound_button_tick_ico);
-        mButtonText = (FlatStateText) findViewById(R.id.flat_compound_button_text);
+        mFlatStateText = (FlatStateText) findViewById(R.id.flat_compound_button_text);
 
         mButtonView.setOnStateButtonCheckedListener(this);
         applyAttributeSet(context, attrs);
@@ -86,9 +91,16 @@ public class FlatCompoundButton extends FrameLayout implements Checkable, OnStat
             setButtonTitleTickRes(mButtonTitleTickRes);
         }
 
-        setText(typedArray.getText(R.styleable.FlatCompoundButton_setText));
+        setFlatText(typedArray.getText(R.styleable.FlatCompoundButton_setFlatText));
         setTextSize(typedArray.getDimensionPixelSize(R.styleable.FlatCompoundButton_setTextSize, 15));
         setTextColor(typedArray.getColorStateList(R.styleable.FlatCompoundButton_setTextColor));
+
+        setButtText(typedArray.getText(R.styleable.FlatCompoundButton_setButtText));
+        setButtonMargin(typedArray.getDimensionPixelSize(R.styleable.FlatCompoundButton_setButtMargin, 15));
+        mButtonStateSelector = typedArray.getResourceId(R.styleable.FlatCompoundButton_setButtBackground, 0);
+        if (mButtonStateSelector != 0) {
+            setButtonBackground(mButtonStateSelector);
+        }
 
         typedArray.recycle();
 
@@ -113,13 +125,13 @@ public class FlatCompoundButton extends FrameLayout implements Checkable, OnStat
     @Override
     public void setChecked(boolean checked) {
         mButtonView.setChecked(checked);
-        mButtonText.setChecked(checked);
+        mFlatStateText.setChecked(checked);
         mButtonTitleTickIcon.setChecked(checked);
     }
 
     @Override
     public void onCheckedChanged(boolean isChecked) {
-        mButtonText.setChecked(isChecked);
+        mFlatStateText.setChecked(isChecked);
         mButtonTitleTickIcon.setChecked(isChecked);
         if (mBroadcasting) {
             return;
@@ -167,7 +179,7 @@ public class FlatCompoundButton extends FrameLayout implements Checkable, OnStat
 
     @Override
     public void onCheckedToggle() {
-        mButtonText.toggle();
+        mFlatStateText.toggle();
         mButtonTitleTickIcon.toggle();
     }
 
@@ -183,23 +195,42 @@ public class FlatCompoundButton extends FrameLayout implements Checkable, OnStat
         mButtonTitleTickIcon.toggle();
     }
 
-    public void setText(@StringRes int resId) {
-        setText(getResources().getString(resId));
+    public void setFlatText(@StringRes int resId) {
+        setFlatText(getResources().getString(resId));
     }
 
-    public void setText(CharSequence text) {
-        this.mText = text;
-        this.mButtonText.setText(mText);
+    public void setFlatText(CharSequence text) {
+        this.mFlatText = text;
+        this.mFlatStateText.setText(mFlatText);
+    }
+
+    public void setButtText(CharSequence text) {
+        this.mButtText = text;
+        this.mButtonView.setText(mButtText);
     }
 
     public void setTextSize(float textSize) {
         this.mTextSize = textSize;
-        this.mButtonText.setTextSize(mTextSize);
+        this.mFlatStateText.setTextSize(mTextSize);
+    }
+
+    public void setButtonMargin(int buttonMargin) {
+        this.mButtonMargin = buttonMargin;
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) this.mButtonView.getLayoutParams();
+        params.setMargins(mButtonMargin, mButtonMargin, mButtonMargin, mButtonMargin); //left, top, right, bottom
+        this.mButtonView.setLayoutParams(params);
+    }
+
+    public void setButtonBackground(int buttonStateSelector) {
+        this.mButtonStateSelector = buttonStateSelector;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            this.mButtonView.setBackground(getResources().getDrawable(mButtonStateSelector));
+        }
     }
 
     public void setTextColor(ColorStateList colorStateList) {
         this.mColorColorStateList = colorStateList;
-        this.mButtonText.setTextColor(mColorColorStateList);
+        this.mFlatStateText.setTextColor(mColorColorStateList);
     }
 
     public void setTextColor(@ColorInt int color) {
