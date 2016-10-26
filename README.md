@@ -1,5 +1,9 @@
 # FlatRadioGroup
 
+**ScreenShot**:
+
+<img src="screenshots/app_shot1.png" width="65%" />
+
 
 License
 -------
